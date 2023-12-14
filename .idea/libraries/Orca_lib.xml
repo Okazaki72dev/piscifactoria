@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Orca_lib">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/Orca_lib.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

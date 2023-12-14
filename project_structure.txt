@@ -1,0 +1,39 @@
+--- Folder Structure ---
+[.vscode]
+    └── settings.json
+[bin]
+    ├── [commons]
+        ├── Coins.class
+        └── Simul.class
+    └── [pools]
+        ├── Pool.class
+        ├── RiverPool.class
+        └── [tanks]
+            ├── [fish]
+                ├── [feedtype]
+                    └── OmnivoroComedido.class
+                ├── Fish.class
+                └── [riverfish]
+                    ├── CarpinTresEspinas.class
+                    └── IRiverFish.class
+            └── Tank.class
+[lib]
+    └── Orca_lib.jar
+README.md
+[src]
+    ├── [commons]
+        ├── Coins.java
+        └── Simul.java
+    └── [pools]
+        ├── Pool.java
+        ├── RiverPool.java
+        └── [tanks]
+            ├── [fish]
+                ├── [feedtype]
+                    └── OmnivoroComedido.java
+                ├── Fish.java
+                └── [riverfish]
+                    ├── CarpinTresEspinas.java
+                    └── IRiverFish.java
+            └── Tank.java
+
