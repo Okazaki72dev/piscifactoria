@@ -7,6 +7,8 @@ import pools.tanks.Tank;
 import pools.tanks.fish.Fish;
 import pools.tanks.fish.riverfish.CarpinTresEspinas;
 import propiedades.AlmacenPropiedades;
+import registro.ErrorLogger;
+import registro.Transcripcion;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -27,14 +29,15 @@ public abstract class Simul {
 
     static Coins purse = Coins.getInstance(); // Coins por SINGLETON
     static AlmacenCentral almacenCentral = null;
+    static Transcripcion trans = null;
 
     static void init(String gameName) {
         Simul.gameName = gameName;
-        if (riverPoolArray == null && seaPoolArray == null && everyPoolArray == null) {
-            riverPoolArray = new ArrayList<>();
-            seaPoolArray = new ArrayList<>();
-            everyPoolArray = new ArrayList<>();
-        }
+
+        // DESPUES PASARA A REGISTRO
+        trans = Transcripcion.getInstance();
+
+        createArrays();
         System.out.println("Dame el nombre de tu primera piscifactoria (de río)");
         String poolName = scan.nextLine();
         RiverPool p1 = new RiverPool(poolName);
@@ -43,6 +46,14 @@ public abstract class Simul {
         everyPoolArray.add(p1);
         purse.add(10000);
         Simul.initMenu();
+    }
+
+    static void createArrays() {
+        if (riverPoolArray == null && seaPoolArray == null && everyPoolArray == null) {
+            riverPoolArray = new ArrayList<>();
+            seaPoolArray = new ArrayList<>();
+            everyPoolArray = new ArrayList<>();
+        }
     }
 
     private static void menu() {
@@ -707,6 +718,7 @@ public abstract class Simul {
                     costeSeaPool + " monedas");
         }
     }
+
     private static void showUpgradeOptions() {
         System.out.println("\n----- Mejorar Edificios -----");
         System.out.println("1. Piscifactoría");
@@ -782,8 +794,27 @@ public abstract class Simul {
         selectPisc(everyPoolArray).emptyTank();
     }
 
+
+    // GETTERS
+
+    public static String getGameName() {
+        return gameName;
+    }
+
+    public static String[] getPeces() {
+        return peces;
+    }
+
     public static void main(String[] args) throws Exception {
-        System.out.println("Nombre de tu partida: ");
-        init(scan.nextLine());
+        try {
+            System.out.println("Nombre de tu partida: ");
+            init(scan.nextLine());
+            System.out.println(1/0);
+        }
+        catch (Exception e){
+            trans.finalizarTranscripcion();
+            ErrorLogger.getInstance().registrarError("Cerrando streams debido a error.\nFin del programa");
+        }
+
     }
 }

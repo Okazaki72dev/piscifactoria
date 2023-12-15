@@ -5,7 +5,7 @@ import pools.tanks.fish.Fish;
 
 import java.util.ArrayList;
 
-public class RiverPool extends Pool implements IRiverPool{
+public class RiverPool extends Pool implements IRiverPool {
 
     private static final int BASE_COST_POOL = 500;
 

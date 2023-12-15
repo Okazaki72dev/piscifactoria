@@ -5,7 +5,7 @@ import pools.tanks.fish.Fish;
 
 import java.util.ArrayList;
 
-public class SeaPool extends Pool implements ISeaPool{
+public class SeaPool extends Pool implements ISeaPool {
 
     private static final int BASE_COST_POOL = 2000;
 
